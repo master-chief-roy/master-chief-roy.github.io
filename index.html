@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header/Navbar -->
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <h1 class="brand-name" id="nombreHeader"></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active" data-seccion="inicio">Inicio</a></li>
+                    <li><a href="#" class="nav-link" data-seccion="historia">Historia</a></li>
+                    <li><a href="#" class="nav-link" data-seccion="logros">Logros</a></li>
+                    <li><a href="#" class="nav-link" data-seccion="certificados">Certificados</a></li>
+                    <li><a href="#" class="nav-link" data-seccion="herramientas">Herramientas</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" id="whatsappLink" target="_blank" title="WhatsApp" class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" id="instagramLink" target="_blank" title="Instagram" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" id="linkedinLink" target="_blank" title="LinkedIn" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Sección Inicio -->
+            <section id="inicio" class="seccion active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h2 id="nombreCompleto"></h2>
+                        <p class="carrera" id="carreraTexto"></p>
+                        <p class="univerisidad" id="universidadTexto"></p>
+                        <p class="resumen" id="resumenTexto"></p>
+                        <div class="contacto-info">
+                            <p><strong>Email:</strong> <span id="emailTexto"></span></p>
+                            <p><strong>Teléfono:</strong> <span id="telefonoTexto"></span></p>
+                        </div>
+                        <div class="botones-inicio">
+                            <button class="btn btn-primary" onclick="irSeccion('logros')">Ver mis logros</button>
+                            <button class="btn btn-secondary" onclick="irSeccion('certificados')">Mis certificados</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Historia -->
+            <section id="historia" class="seccion">
+                <div class="seccion-content">
+                    <h2 id="historiaTitle"></h2>
+                    <p id="historiaTexto" class="descripcion-general"></p>
+                    <div class="timeline">
+                        <div id="timelineContainer"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Logros -->
+            <section id="logros" class="seccion">
+                <div class="seccion-content">
+                    <h2 id="logrosTitle"></h2>
+                    <div class="logros-grid" id="logrosContainer"></div>
+                </div>
+            </section>
+
+            <!-- Sección Certificados -->
+            <section id="certificados" class="seccion">
+                <div class="seccion-content">
+                    <h2 id="certificadosTitle"></h2>
+                    <div class="certificados-grid" id="certificadosContainer"></div>
+                </div>
+            </section>
+
+            <!-- Sección Herramientas -->
+            <section id="herramientas" class="seccion">
+                <div class="seccion-content">
+                    <h2 id="herramientasTitle"></h2>
+                    <div class="herramientas-grid" id="herramientasContainer"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Mi Portafolio. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+{
+  "nombre": "Tu Nombre",
+  "carrera": "Ingeniería en Sistemas",
+  "universidad": "Universidad Nacional",
+  "email": "tu.email@ejemplo.com",
+  "telefono": "+1 234 567 8900",
+  "resumenPerfil": "Desarrollador apasionado por la tecnología y la innovación",
+  
+  "redesSociales": {
+    "whatsapp": "https://wa.me/1234567890",
+    "instagram": "https://instagram.com/tu_usuario",
+    "linkedin": "https://linkedin.com/in/tu_usuario"
+  },
+  "historia": {
+    "titulo": "Mi Historia",
+    "contenido": "Soy un profesional en desarrollo con una pasión por crear soluciones tecnológicas innovadoras. Con experiencia en desarrollo web y aplicaciones, he trabajado en diversos proyectos que combinan diseño, funcionalidad y experiencia del usuario.",
+    "experiencias": [
+      {
+        "año": "2024-2025",
+        "titulo": "Desarrollador Fullstack",
+        "empresa": "Tech Company",
+        "descripcion": "Desarrollo de aplicaciones web con React y Node.js"
+      },
+      {
+        "año": "2023-2024",
+        "titulo": "Desarrollador Frontend",
+        "empresa": "Digital Solutions",
+        "descripcion": "Creación de interfaces interactivas con HTML5, CSS3 y JavaScript"
+      }
+    ]
+  },
+
+  "logros": {
+    "titulo": "Mis Logros",
+    "items": [
+      {
+        "icono": "🎓",
+        "titulo": "Graduación",
+        "descripcion": "Completé mi carrera universitaria con honores"
+      },
+      {
+        "icono": "🏆",
+        "titulo": "Proyectos Exitosos",
+        "descripcion": "Desarrollé 15+ proyectos que impactaron positivamente"
+      },
+      {
+        "icono": "⭐",
+        "titulo": "Experiencia Profesional",
+        "descripcion": "3+ años en la industria tecnológica"
+      },
+      {
+        "icono": "🚀",
+        "titulo": "Innovación",
+        "descripcion": "Implementé soluciones innovadoras que mejoraron procesos"
+      }
+    ]
+  },
+
+  "certificados": {
+    "titulo": "Certificados y Cursos",
+    "items": [
+      {
+        "nombre": "Fullstack Web Development",
+        "precio": "Plataforma",
+        "fecha": "2024",
+        "descripcion": "Desarrollo completo de aplicaciones web"
+      },
+      {
+        "nombre": "React Advanced",
+        "precio": "Udemy",
+        "fecha": "2024",
+        "descripcion": "Desarrollo de aplicaciones avanzadas con React"
+      },
+      {
+        "nombre": "Python for Data Science",
+        "precio": "DataCamp",
+        "fecha": "2023",
+        "descripcion": "Análisis de datos con Python y librerías especializadas"
+      },
+      {
+        "nombre": "AWS Solutions Architect",
+        "precio": "AWS",
+        "fecha": "2023",
+        "descripcion": "Diseño de arquitecturas en la nube con AWS"
+      }
+    ]
+  },
+
+  "herramientas": {
+    "titulo": "Herramientas y Tecnologías",
+    "categorias": [
+      {
+        "nombre": "Frontend",
+        "tecnologias": ["HTML5", "CSS3", "JavaScript", "React", "Vue.js", "Responsive Design"]
+      },
+      {
+        "nombre": "Backend",
+        "tecnologias": ["Node.js", "Python", "Express.js", "Django", "REST APIs", "SQL"]
+      },
+      {
+        "nombre": "Bases de Datos",
+        "tecnologias": ["MySQL", "PostgreSQL", "MongoDB", "Firebase"]
+      },
+      {
+        "nombre": "Herramientas",
+        "tecnologias": ["Git", "GitHub", "VS Code", "Figma", "Docker", "Linux"]
+      }
+    ]
+  }
+}
