@@ -33,7 +33,10 @@
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
-                <div class="hamburger">
+                <button id="themeToggle" class="theme-toggle" aria-label="Cambiar modo de tema: claro, oscuro o automático">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" aria-label="Abrir menú de navegación" role="button" tabindex="0">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -105,6 +108,49 @@
         <footer class="footer">
             <p>&copy; 2026 Mi Portafolio. Todos los derechos reservados.</p>
         </footer>
+    </div>
+
+    <!-- Botón Back to Top -->
+    <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Modal para certificados -->
+    <div id="certificadoModal" class="modal-overlay">
+        <div class="modal-content certificado-modal">
+            <button class="modal-close" id="modalClose" aria-label="Cerrar modal de certificado">&times;</button>
+            <div class="certificado-modal-header">
+                <div class="certificado-seal">
+                    <i class="fas fa-award certificado-seal-icon"></i>
+                </div>
+                <h2 class="certificado-modal-title" id="modalTitle"></h2>
+                <div class="certificado-ribbon">
+                    <span>Certificado</span>
+                </div>
+            </div>
+            <div class="certificado-modal-body">
+                <div class="certificado-modal-icon" id="modalIcon"></div>
+                <div class="certificado-modal-details">
+                    <div class="certificado-modal-meta">
+                        <div class="meta-item">
+                            <strong>Plataforma:</strong> <span id="modalPlataforma"></span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>Año:</strong> <span id="modalFecha"></span>
+                        </div>
+                    </div>
+                    <div class="certificado-modal-description">
+                        <p id="modalDescription"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="certificado-modal-footer">
+                <div class="certificado-signature">
+                    <div class="signature-line"></div>
+                    <span class="signature-text">Certificado Oficial</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

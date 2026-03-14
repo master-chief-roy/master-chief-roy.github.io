@@ -1,9 +1,9 @@
 {
-  "nombre": "Tu Nombre",
-  "carrera": "Ingeniería en Sistemas",
-  "universidad": "Universidad Nacional",
-  "email": "tu.email@ejemplo.com",
-  "telefono": "+1 234 567 8900",
+  "nombre": "Ing. Ronny Fabricio Toctaquiza Piedra",
+  "carrera": "Ingeniería en Electrónica, Telecomunicaciones y Redes",
+  "universidad": "Escuela Superior Politécnica de Chimborazo",
+  "email": "master.chief.roy@gmail.com",
+  "telefono": "+593 994498363",
   "resumenPerfil": "Desarrollador apasionado por la tecnología y la innovación",
   
   "redesSociales": {
@@ -34,22 +34,22 @@
     "titulo": "Mis Logros",
     "items": [
       {
-        "icono": "🎓",
+        "icono": "fa-solid fa-graduation-cap",
         "titulo": "Graduación",
         "descripcion": "Completé mi carrera universitaria con honores"
       },
       {
-        "icono": "🏆",
+        "icono": "fa-solid fa-trophy",
         "titulo": "Proyectos Exitosos",
         "descripcion": "Desarrollé 15+ proyectos que impactaron positivamente"
       },
       {
-        "icono": "⭐",
+        "icono": "fa-solid fa-briefcase",
         "titulo": "Experiencia Profesional",
         "descripcion": "3+ años en la industria tecnológica"
       },
       {
-        "icono": "🚀",
+        "icono": "fa-solid fa-lightbulb",
         "titulo": "Innovación",
         "descripcion": "Implementé soluciones innovadoras que mejoraron procesos"
       }
@@ -60,50 +60,205 @@
     "titulo": "Certificados y Cursos",
     "items": [
       {
+        "icono": "fa-solid fa-laptop-code",
         "nombre": "Fullstack Web Development",
         "precio": "Plataforma",
         "fecha": "2024",
         "descripcion": "Desarrollo completo de aplicaciones web"
       },
       {
+        "icono": "fab fa-react",
         "nombre": "React Advanced",
         "precio": "Udemy",
         "fecha": "2024",
         "descripcion": "Desarrollo de aplicaciones avanzadas con React"
       },
       {
+        "icono": "fab fa-python",
         "nombre": "Python for Data Science",
         "precio": "DataCamp",
         "fecha": "2023",
         "descripcion": "Análisis de datos con Python y librerías especializadas"
       },
       {
+        "icono": "fab fa-aws",
         "nombre": "AWS Solutions Architect",
         "precio": "AWS",
         "fecha": "2023",
         "descripcion": "Diseño de arquitecturas en la nube con AWS"
+      },
+      {
+        "icono": "fas fa-shield-alt",
+        "nombre": "Ethical Hacking Fundamentals",
+        "precio": "Certificado",
+        "fecha": "2025",
+        "descripcion": "Curso de capacitación en Ethical Hacking"
+      },
+      {
+        "icono": "fas fa-microscope",
+        "nombre": "IMOC 2025 - Presentación",
+        "precio": "Conferencia",
+        "fecha": "2025",
+        "descripcion": "Presentación en IMOC 2025: Fractal Antena Phased Array para WiFi/Bluetooth/UWB"
+      },
+      {
+        "icono": "fas fa-graduation-cap",
+        "nombre": "Base de Datos I",
+        "precio": "IEEE Computer Society",
+        "fecha": "2025",
+        "descripcion": "Curso de Base de Datos I"
+      },
+      {
+        "icono": "fas fa-network-wired",
+        "nombre": "Redes de Datos I",
+        "precio": "IEEE Computer Society",
+        "fecha": "2025",
+        "descripcion": "Curso de Redes de Datos I"
+      },
+      {
+        "icono": "fas fa-shield-alt",
+        "nombre": "Seguridad Perimetral",
+        "precio": "IEEE Computer Society",
+        "fecha": "2025",
+        "descripcion": "Curso de Seguridad Perimetral"
       }
     ]
   },
 
   "herramientas": {
     "titulo": "Herramientas y Tecnologías",
-    "categorias": [
+    "skills": [
       {
-        "nombre": "Frontend",
-        "tecnologias": ["HTML5", "CSS3", "JavaScript", "React", "Vue.js", "Responsive Design"]
+        "nombre": "HTML/CSS",
+        "icono": "fab fa-html5",
+        "porcentaje": 99,
+        "color": "#f06529"
       },
       {
-        "nombre": "Backend",
-        "tecnologias": ["Node.js", "Python", "Express.js", "Django", "REST APIs", "SQL"]
+        "nombre": "JavaScript",
+        "icono": "fab fa-js",
+        "porcentaje": 90,
+        "color": "#f7df1e"
       },
       {
-        "nombre": "Bases de Datos",
-        "tecnologias": ["MySQL", "PostgreSQL", "MongoDB", "Firebase"]
+        "nombre": "React",
+        "icono": "fab fa-react",
+        "porcentaje": 85,
+        "color": "#61dafb"
       },
       {
-        "nombre": "Herramientas",
-        "tecnologias": ["Git", "GitHub", "VS Code", "Figma", "Docker", "Linux"]
+        "nombre": "Node.js",
+        "icono": "fab fa-node-js",
+        "porcentaje": 80,
+        "color": "#3c873a"
+      },
+      {
+        "nombre": "Vue.js",
+        "icono": "fab fa-vuejs",
+        "porcentaje": 78,
+        "color": "#41b883"
+      },
+      {
+        "nombre": "Python",
+        "icono": "fab fa-python",
+        "porcentaje": 85,
+        "color": "#3776ab"
+      },
+      {
+        "nombre": "Django",
+        "icono": "fas fa-spider",
+        "porcentaje": 75,
+        "color": "#44b78b"
+      },
+      {
+        "nombre": "Express.js",
+        "icono": "fas fa-server",
+        "porcentaje": 78,
+        "color": "#339933"
+      },
+      {
+        "nombre": "MySQL",
+        "icono": "fas fa-database",
+        "porcentaje": 80,
+        "color": "#00758f"
+      },
+      {
+        "nombre": "PostgreSQL",
+        "icono": "fas fa-database",
+        "porcentaje": 78,
+        "color": "#336791"
+      },
+      {
+        "nombre": "MongoDB",
+        "icono": "fas fa-leaf",
+        "porcentaje": 73,
+        "color": "#47a248"
+      },
+      {
+        "nombre": "Firebase",
+        "icono": "fas fa-fire",
+        "porcentaje": 70,
+        "color": "#ffca28"
+      },
+      {
+        "nombre": "Arduino",
+        "icono": "fas fa-microchip",
+        "porcentaje": 72,
+        "color": "#00979d"
+      },
+      {
+        "nombre": "IoT",
+        "icono": "fas fa-wifi",
+        "porcentaje": 70,
+        "color": "#00bcd4"
+      },
+      {
+        "nombre": "RF",
+        "icono": "fas fa-broadcast-tower",
+        "porcentaje": 68,
+        "color": "#ff6f61"
+      },
+      {
+        "nombre": "Bootstrap",
+        "icono": "fab fa-bootstrap",
+        "porcentaje": 95,
+        "color": "#7952b3"
+      },
+      {
+        "nombre": "UI/UX",
+        "icono": "fas fa-paint-brush",
+        "porcentaje": 98,
+        "color": "#ff6b81"
+      },
+      {
+        "nombre": "Git & GitHub",
+        "icono": "fab fa-git-alt",
+        "porcentaje": 92,
+        "color": "#f05032"
+      },
+      {
+        "nombre": "VS Code",
+        "icono": "fas fa-code",
+        "porcentaje": 90,
+        "color": "#007acc"
+      },
+      {
+        "nombre": "Docker",
+        "icono": "fab fa-docker",
+        "porcentaje": 85,
+        "color": "#2496ed"
+      },
+      {
+        "nombre": "Linux",
+        "icono": "fab fa-linux",
+        "porcentaje": 85,
+        "color": "#f0dfaf"
+      },
+      {
+        "nombre": "Figma",
+        "icono": "fab fa-figma",
+        "porcentaje": 82,
+        "color": "#f24e1e"
       }
     ]
   }

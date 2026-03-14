@@ -20,6 +20,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Configurar hamburger menu para móviles
     configurarHamburger();
+
+    // Configurar tema claro/oscuro
+    configurarThemeToggle();
+    aplicarTemaGuardado();
+    
+    // Configurar modal de certificados
+    configurarModalCertificado();
+    
+    // Configurar back to top
+    configurarBackToTop();
+    
+    // Configurar scrollspy para navegación automática
+    configurarScrollSpy();
     
     // Mostrar sección de inicio por defecto
     mostrarSeccion('inicio');
@@ -50,6 +63,16 @@ function renderizarPerfil() {
     document.getElementById('resumenTexto').textContent = portafolioData.resumenPerfil;
     document.getElementById('emailTexto').textContent = portafolioData.email;
     document.getElementById('telefonoTexto').textContent = portafolioData.telefono;
+
+    // Hacer clic en el nombre regresa al inicio
+    const nombreHeader = document.getElementById('nombreHeader');
+    if (nombreHeader) {
+        nombreHeader.style.cursor = 'pointer';
+        nombreHeader.addEventListener('click', () => {
+            mostrarSeccion('inicio');
+            setActiveNav('inicio');
+        });
+    }
     
     // Actualizar redes sociales
     if (portafolioData.redesSociales) {
@@ -98,17 +121,22 @@ function renderizarHistoria() {
 // Renderizar logros
 function renderizarLogros() {
     const { logros } = portafolioData;
-    
+
     document.getElementById('logrosTitle').textContent = logros.titulo;
-    
+
     const logrosContainer = document.getElementById('logrosContainer');
     logrosContainer.innerHTML = '';
-    
+
     logros.items.forEach(logro => {
         const card = document.createElement('div');
         card.className = 'logro-card';
+
+        const iconHtml = logro.icono && logro.icono.startsWith('fa')
+            ? `<i class="${logro.icono}"></i>`
+            : logro.icono || '';
+
         card.innerHTML = `
-            <div class="logro-icon">${logro.icono}</div>
+            <div class="logro-icon">${iconHtml}</div>
             <h3>${logro.titulo}</h3>
             <p>${logro.descripcion}</p>
         `;
@@ -119,24 +147,92 @@ function renderizarLogros() {
 // Renderizar certificados
 function renderizarCertificados() {
     const { certificados } = portafolioData;
-    
+
     document.getElementById('certificadosTitle').textContent = certificados.titulo;
-    
+
     const certificadosContainer = document.getElementById('certificadosContainer');
     certificadosContainer.innerHTML = '';
-    
+
     certificados.items.forEach(cert => {
         const card = document.createElement('div');
         card.className = 'certificado-card';
+        card.style.cursor = 'pointer';
+
+        const iconHtml = cert.icono && cert.icono.startsWith('fa')
+            ? `<i class="${cert.icono} certificado-icon"></i>`
+            : '';
+
         card.innerHTML = `
-            <h3>${cert.nombre}</h3>
+            <div class="certificado-header">
+                ${iconHtml}
+                <h3>${cert.nombre}</h3>
+            </div>
             <div class="certificado-meta">
                 <span><strong>Plataforma:</strong> ${cert.precio}</span>
                 <span><strong>Año:</strong> ${cert.fecha}</span>
             </div>
             <p>${cert.descripcion}</p>
         `;
+
+        // Agregar evento click para abrir modal
+        card.addEventListener('click', () => abrirModalCertificado(cert));
+
         certificadosContainer.appendChild(card);
+    });
+}
+
+// Función para abrir modal de certificado
+function abrirModalCertificado(cert) {
+    const modal = document.getElementById('certificadoModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalPlataforma = document.getElementById('modalPlataforma');
+    const modalFecha = document.getElementById('modalFecha');
+    const modalDescription = document.getElementById('modalDescription');
+
+    modalTitle.textContent = cert.nombre;
+    modalPlataforma.textContent = cert.precio;
+    modalFecha.textContent = cert.fecha;
+    modalDescription.textContent = cert.descripcion;
+
+    // Agregar icono si existe
+    if (cert.icono && cert.icono.startsWith('fa')) {
+        modalIcon.innerHTML = `<i class="${cert.icono} certificado-modal-main-icon"></i>`;
+    } else {
+        modalIcon.innerHTML = '';
+    }
+
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+// Función para cerrar modal
+function cerrarModalCertificado() {
+    const modal = document.getElementById('certificadoModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Configurar eventos del modal
+function configurarModalCertificado() {
+    const modal = document.getElementById('certificadoModal');
+    const closeBtn = document.getElementById('modalClose');
+
+    // Cerrar modal al hacer click en la X
+    closeBtn.addEventListener('click', cerrarModalCertificado);
+
+    // Cerrar modal al hacer click fuera del contenido
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            cerrarModalCertificado();
+        }
+    });
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            cerrarModalCertificado();
+        }
     });
 }
 
@@ -148,23 +244,72 @@ function renderizarHerramientas() {
     
     const herramientasContainer = document.getElementById('herramientasContainer');
     herramientasContainer.innerHTML = '';
-    
-    herramientas.categorias.forEach(categoria => {
-        const categoriaDiv = document.createElement('div');
-        categoriaDiv.className = 'herramienta-categoria';
-        
-        const tecnologiasHtml = categoria.tecnologias
-            .map(tech => `<span class="herramienta-tag">${tech}</span>`)
-            .join('');
-        
-        categoriaDiv.innerHTML = `
-            <h3>${categoria.nombre}</h3>
-            <div class="herramienta-lista">
-                ${tecnologiasHtml}
+
+    const skills = herramientas.skills || [];
+
+    skills.forEach(skill => {
+        const card = document.createElement('div');
+        card.className = 'skill-card';
+
+        const color = skill.color || 'var(--accent)';
+        const iconHtml = skill.icono && skill.icono.startsWith('fa')
+            ? `<i class="${skill.icono}"></i>`
+            : '';
+
+        const percent = Number(skill.porcentaje) || 0;
+        const barWidth = Math.min(Math.max(percent, 0), 100);
+
+        card.innerHTML = `
+            <div class="skill-header">
+                <div class="skill-icon" style="color: ${color}; border-color: ${color}; background: ${color}22;">
+                    ${iconHtml}
+                </div>
+                <div class="skill-name">${skill.nombre}</div>
             </div>
+            <div class="skill-progress">
+                <div class="skill-bar" data-percent="${barWidth}" style="background: ${color};"></div>
+            </div>
+            <div class="skill-value">${barWidth}%</div>
         `;
-        
-        herramientasContainer.appendChild(categoriaDiv);
+
+        herramientasContainer.appendChild(card);
+    });
+
+    // Activar animación al aparecer en pantalla
+    activarAnimacionesDeSkills();
+}
+
+function activarAnimacionesDeSkills() {
+    const cards = document.querySelectorAll('.skill-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+
+                const bar = entry.target.querySelector('.skill-bar');
+                if (bar) {
+                    const percent = bar.dataset.percent || '0';
+                    // Agregar delay progresivo para cada barra
+                    setTimeout(() => {
+                        bar.style.width = `${percent}%`;
+                    }, index * 200); // 200ms delay entre cada barra
+                }
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Helper para activar el enlace de navegación correspondiente
+function setActiveNav(seccion) {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('data-seccion') === seccion);
     });
 }
 
@@ -180,8 +325,7 @@ function configurarNavegacion() {
             const seccion = link.getAttribute('data-seccion');
             
             // Actualizar clase activa en navegación
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
+            setActiveNav(seccion);
             
             // Mostrar sección
             mostrarSeccion(seccion);
@@ -260,6 +404,124 @@ function actualizarDatos(nuevosDatos) {
     renderizarLogros();
     renderizarCertificados();
     renderizarHerramientas();
+}
+
+// Tema claro / oscuro / automático
+function aplicarTemaGuardado() {
+    const temaGuardado = localStorage.getItem('theme') || 'auto';
+    aplicarTema(temaGuardado);
+}
+
+function aplicarTema(tema) {
+    if (tema === 'auto') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.body.classList.toggle('light', !prefersDark);
+    } else {
+        document.body.classList.toggle('light', tema === 'light');
+    }
+    actualizarIconoTema(tema);
+}
+
+function configurarThemeToggle() {
+    const toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+
+    // Aplicar tema inicial
+    const temaGuardado = localStorage.getItem('theme') || 'auto';
+    aplicarTema(temaGuardado);
+
+    toggle.addEventListener('click', () => {
+        let currentTheme = localStorage.getItem('theme') || 'auto';
+        let nextTheme;
+
+        // Ciclo: auto -> light -> dark -> auto
+        if (currentTheme === 'auto') {
+            nextTheme = 'light';
+        } else if (currentTheme === 'light') {
+            nextTheme = 'dark';
+        } else {
+            nextTheme = 'auto';
+        }
+
+        localStorage.setItem('theme', nextTheme);
+        aplicarTema(nextTheme);
+    });
+
+    // Escuchar cambios en el modo del sistema cuando esté en auto
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        const currentTheme = localStorage.getItem('theme') || 'auto';
+        if (currentTheme === 'auto') {
+            aplicarTema('auto');
+        }
+    });
+}
+
+function actualizarIconoTema(tema) {
+    const toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+
+    const icon = toggle.querySelector('i');
+    if (!icon) return;
+
+    if (tema === 'light') {
+        icon.className = 'fas fa-sun';
+    } else if (tema === 'dark') {
+        icon.className = 'fas fa-moon';
+    } else { // auto
+        icon.className = 'fas fa-adjust';
+    }
+}
+
+// Configurar botón back to top
+function configurarBackToTop() {
+    const backToTopBtn = document.getElementById('backToTop');
+    if (!backToTopBtn) return;
+
+    // Mostrar/ocultar botón basado en scroll
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    // Scroll suave al top al hacer click
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Configurar scrollspy para navegación automática
+function configurarScrollSpy() {
+    const sections = document.querySelectorAll('.seccion');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                // Actualizar navegación activa
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('data-seccion') === id);
+                });
+            }
+        });
+    }, observerOptions);
+
+    // Observar todas las secciones
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 }
 
 // Para debugging en consola
