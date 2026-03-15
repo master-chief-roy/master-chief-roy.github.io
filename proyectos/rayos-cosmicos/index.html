@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño e implementación de un sistema SDR para la detección de radiación electromagnética debido a la presencia de rayos cósmicos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Roboto', Arial, sans-serif; background: #f5f5f5; color: #222; }
+        .espoch-header { background: #c62828; color: #fff; padding: 1.2rem 0 1.2rem 0; }
+        .espoch-header .container { display: flex; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .espoch-logo { height: 64px; margin-right: 1.5rem; }
+        .espoch-title { font-size: 1.7rem; font-weight: 700; letter-spacing: 0.5px; }
+        .breadcrumb { background: #f3f3f3; color: #444; font-size: 1rem; padding: 0.7rem 0; }
+        .breadcrumb .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb a { color: #c62828; text-decoration: none; margin-right: 0.5rem; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .main-content { max-width: 1200px; margin: 2.5rem auto 2rem auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 16px #0001; padding: 2.5rem 2rem; }
+        .result-header { font-size: 1.3rem; color: #222; margin-bottom: 1.5rem; }
+        .result-box { display: flex; gap: 2rem; align-items: flex-start; background: #fafafa; border-radius: 8px; box-shadow: 0 1px 8px #0001; padding: 1.5rem 1rem; }
+        .result-img { width: 120px; min-width: 100px; border: 1px solid #eee; border-radius: 6px; background: #fff; }
+        .result-info { flex: 1; }
+        .result-title { font-size: 1.18rem; color: #1976d2; font-weight: 700; margin-bottom: 0.5rem; text-decoration: none; }
+        .result-meta { color: #666; font-size: 0.98rem; margin-bottom: 0.7rem; }
+        .result-abstract { color: #444; font-size: 1.05rem; margin-bottom: 1.1rem; }
+        .result-actions { display: flex; gap: 1.2rem; }
+        .result-btn { background: #c62828; color: #fff; border: none; border-radius: 5px; padding: 0.7rem 1.5rem; font-size: 1rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+        .result-btn:hover { background: #a31515; }
+        .footer-espoch { background: #c62828; color: #fff; padding: 2rem 0 1.2rem 0; margin-top: 3rem; }
+        .footer-espoch .container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
+        .footer-block { min-width: 220px; }
+        .footer-title { font-weight: 700; margin-bottom: 0.7rem; }
+        .footer-contact { font-size: 0.98rem; line-height: 1.7; }
+        .footer-social { margin-top: 1rem; }
+        .footer-social a { color: #fff; margin-right: 0.7rem; font-size: 1.3rem; text-decoration: none; }
+        .footer-social a:hover { color: #ffd166; }
+        @media (max-width: 800px) { .main-content, .footer-espoch .container, .espoch-header .container, .breadcrumb .container { padding: 0 1rem; } .result-box { flex-direction: column; align-items: stretch; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="espoch-header">
+        <div class="container">
+            <img src="logo-espoch.png" alt="Logo ESPOCH" class="espoch-logo">
+            <span class="espoch-title">Escuela Superior Politécnica de Chimborazo</span>
+        </div>
+    </header>
+    <nav class="breadcrumb">
+        <div class="container">
+            <a href="#">Inicio</a> &gt; <a href="#">Buscar por autor</a> &gt; <span>Amagua Romero, Alejandro David</span>
+        </div>
+    </nav>
+    <main class="main-content">
+        <div class="result-header">Examinando por Autor "Amagua Romero, Alejandro David"</div>
+        <div class="result-box">
+            <img src="portada-tesis.png" alt="Portada Tesis" class="result-img">
+            <div class="result-info">
+                <span class="result-title" onclick="window.open('detalle.html', '_blank')" style="cursor:pointer;">Diseño e implementación de un sistema SDR para la detección de radiación electromagnética debido a la presencia de rayos cósmicos</span>
+                <div class="result-meta">Escuela Superior Politécnica de Chimborazo, 2025-05-09<br>Amagua Romero, Alejandro David; Moreno Avilés, David</div>
+                <div class="result-abstract">The Earth is constantly impacted by cosmic radiation, composed of high-energy particles with varying electric and magnetic fields. The objective of this work was to design and implement an SDR system to detect such electromagnetic radiation. The methodology followed was, as a first step, to build a logarithmic periodic antenna (LPDA) and then use a software-defined radio (SDR) to capture and analyze the signals. The results demonstrate the feasibility of the system for cosmic ray detection.</div>
+                <div class="result-actions">
+                    <a href="./rayos.cosmicos.pdf" class="result-btn" target="_blank"><i class="fa-solid fa-download"></i> Descargar PDF</a>
+                    <a href="https://dspace.espoch.edu.ec/items/17bed05a-56c5-4e5b-9334-eca94a9ac959" class="result-btn" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Más información</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer-espoch">
+        <div class="container">
+            <div class="footer-block">
+                <div class="footer-title">ESCUELA SUPERIOR POLITÉCNICA DE CHIMBORAZO</div>
+                <div class="footer-contact">
+                    Dirección de Bibliotecas y Recursos para el Aprendizaje e Investigación<br>
+                    Panamericana Sur Km 1 1/2<br>
+                    Riobamba - Ecuador<br>
+                    593(03) 2998-200 ext: 1066<br>
+                    biblioteca@espoch.edu.ec
+                </div>
+            </div>
+            <div class="footer-block">
+                <div class="footer-title">SÍGUENOS</div>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/ESPOCHoficial" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/espoch_oficial/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/user/ESPOCHoficial" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-block">
+                <div class="footer-title">RRAAE</div>
+                <div class="footer-contact">
+                    Red de Repositorios de Acceso Abierto del Ecuador<br>
+                    La Referencia Red Latinoamericana de Repositorios
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

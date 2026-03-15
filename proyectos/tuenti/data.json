@@ -1,0 +1,65 @@
+{
+  "proyecto": {
+    "titulo": "Tuenti",
+    "descripcion": "Plataforma social y de mensajería con funcionalidades en tiempo real, chat multimedia y gestión de perfiles de usuario.",
+    "imagen": "../../assets/tuenti-banner.jpg",
+    "estado": "En desarrollo",
+    "fecha": "2024",
+    "tecnologias": ["JavaScript", "HTML5", "CSS3", "Node.js", "Express.js", "MongoDB", "Socket.io"],
+    
+    "resumen": "Tuenti es una plataforma social completa que permite a los usuarios conectar, compartir y comunicarse en tiempo real. El proyecto integra características modernas de redes sociales incluyendo perfiles de usuario, chat en vivo, compartir contenido multimedia y notificaciones en tiempo real.",
+    
+    "caracteristicas": [
+      {
+        "titulo": "Autenticación Segura",
+        "descripcion": "Sistema de autenticación usando JWT y encriptación de contraseñas con bcrypt",
+        "icono": "fa-solid fa-shield"
+      },
+      {
+        "titulo": "Chat en Tiempo Real",
+        "descripcion": "Mensajería instantánea con Socket.io y actualizaciones en vivo",
+        "icono": "fa-solid fa-comments"
+      },
+      {
+        "titulo": "Perfiles de Usuario",
+        "descripcion": "Gestión completa de perfiles con foto, información personal y enlaces sociales",
+        "icono": "fa-solid fa-user"
+      },
+      {
+        "titulo": "Compartir Contenido",
+        "descripcion": "Capacidad de publicar texto, imágenes y videos con comentarios y likes",
+        "icono": "fa-solid fa-share-from-square"
+      },
+      {
+        "titulo": "Notificaciones",
+        "descripcion": "Sistema de notificaciones en tiempo real para actividades del usuario",
+        "icono": "fa-solid fa-bell"
+      },
+      {
+        "titulo": "Búsqueda Avanzada",
+        "descripcion": "Búsqueda de usuarios y contenido con filtros personalizados",
+        "icono": "fa-solid fa-magnifying-glass"
+      }
+    ],
+
+    "arquitectura": {
+      "frontend": {
+        "tecnologias": ["HTML5", "CSS3", "JavaScript Vanilla", "Fetch API"],
+        "descripcion": "Interfaz responsiva y moderna construida con tecnologías web estándar"
+      },
+      "backend": {
+        "tecnologias": ["Node.js", "Express.js", "MongoDB", "Socket.io"],
+        "descripcion": "Servidor robusto con API REST y comunicación en tiempo real"
+      },
+      "base_datos": {
+        "tecnologias": ["MongoDB"],
+        "descripcion": "Base de datos NoSQL para almacenar usuarios, mensajes y contenido"
+      }
+    },
+
+    "repositorio": "https://github.com/tutusuario/tuenti",
+    "demo": "https://tuenti-demo.herokuapp.com",
+    "autor": "Ing. Ronny Toctaquiza",
+    "contacto": "master.chief.roy@gmail.com"
+  }
+}

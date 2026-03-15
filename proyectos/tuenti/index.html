@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuenti - Aplicación Social</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app">
+        <!-- SECTION HEADER -->
+        <section class="header">
+            <div class="cont-header">
+                <div class="titulo">
+                    <h1>¡Hola, Ronny!</h1>
+                    <p class="phone-number">09-94-49-8363</p>
+                </div>
+                <div class="num-icon">👤</div>
+            </div>
+        </section>
+
+        <!-- SECTION ANUNCIOS -->
+        <section class="anuncios">
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="carousel-slide">
+                        <a href="#paquetes">
+                            <img src="img/anuncio.png" alt="Anuncio 1">
+                        </a>
+                    </div>
+                    <div class="carousel-slide">
+                        <a href="#paquetes">
+                            <img src="img/anuncio.png" alt="Anuncio 2">
+                        </a>
+                    </div>
+                    <div class="carousel-slide">
+                        <a href="#paquetes">
+                            <img src="img/anuncio.png" alt="Anuncio 3">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION CARTA -->
+        <section class="carta">
+            <!-- CONTENEDOR 1: SALDO -->
+            <div class="saldo-card">
+                <div class="saldo-header">
+                    <h3>Tu saldo</h3>
+                </div>
+                <div class="saldo-amount">
+                    <span class="currency">$</span>
+                    <span class="amount">1000.00</span>
+                </div>
+                <button class="btn-compra">Compra más</button>
+            </div>
+
+            <!-- CONTENEDOR 2: VENCIMIENTO -->
+            <div class="vence-info">
+                <p>Vence: 01/01/2026</p>
+                <p class="package-info">Plan DIGITAL.100 incluye 10GB + 195min</p>
+            </div>
+
+            <!-- CONTENEDOR 3: CARRUSEL DE USO CON CIRCLES -->
+            <div class="usage-carousel-container">
+                <div class="usage-carousel-wrapper">
+                    <!-- Slide 1: DATOS -->
+                    <div class="usage-carousel-slide active">
+                        <div class="usage-item-large">
+                            <div class="circular-progress-large">
+                                <svg viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="50" class="progress-bg"></circle>
+                                    <circle cx="60" cy="60" r="50" class="progress-bar" style="stroke-dasharray: 85, 314;"></circle>
+                                </svg>
+                                <div class="usage-text-large">
+                                    <span class="usage-value-large">3.34</span>
+                                    <span class="usage-unit-large">GB</span>
+                                </div>
+                            </div>
+                            <div class="usage-info">
+                                <p class="usage-label-large">DATOS MÓVILES</p>
+                                <p class="usage-detail">de 10 GB disponibles</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: VOZ -->
+                    <div class="usage-carousel-slide">
+                        <div class="usage-item-large">
+                            <div class="circular-progress-large">
+                                <svg viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="50" class="progress-bg"></circle>
+                                    <circle cx="60" cy="60" r="50" class="progress-bar voz" style="stroke-dasharray: 126, 314;"></circle>
+                                </svg>
+                                <div class="usage-text-large">
+                                    <span class="usage-value-large">163</span>
+                                    <span class="usage-unit-large">min</span>
+                                </div>
+                            </div>
+                            <div class="usage-info">
+                                <p class="usage-label-large">LLAMADAS</p>
+                                <p class="usage-detail">de 195 minutos disponibles</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: MENSAJES -->
+                    <div class="usage-carousel-slide">
+                        <div class="usage-item-large">
+                            <div class="circular-progress-large">
+                                <svg viewBox="0 0 120 120">
+                                    <circle cx="60" cy="60" r="50" class="progress-bg"></circle>
+                                    <circle cx="60" cy="60" r="50" class="progress-bar sms" style="stroke-dasharray: 71, 314;"></circle>
+                                </svg>
+                                <div class="usage-text-large">
+                                    <span class="usage-value-large">45</span>
+                                    <span class="usage-unit-large">SMS</span>
+                                </div>
+                            </div>
+                            <div class="usage-info">
+                                <p class="usage-label-large">MENSAJES</p>
+                                <p class="usage-detail">de 200 mensajes disponibles</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENEDOR 4: INDICADORES DE PUNTOS -->
+            <div class="carousel-indicators">
+                <div class="indicator-dot active" data-slide="0"></div>
+                <div class="indicator-dot" data-slide="1"></div>
+                <div class="indicator-dot" data-slide="2"></div>
+            </div>
+
+            <!-- CONTENEDOR 5: VER DETALLES -->
+            <a href="#" class="ver-detalles">Ver detalles</a>
+        </section>
+
+        <!-- SECTION SERVICIOS -->
+        <section class="servicios">
+            <h2>Servicios Adicionales</h2>
+            <div class="servicios-grid">
+                <div class="servicio-item">
+                    <div class="servicio-icon">📞</div>
+                    <p>Llamadas a otro país</p>
+                </div>
+                <div class="servicio-item">
+                    <div class="servicio-icon">🌍</div>
+                    <p>Datos Global</p>
+                </div>
+                <div class="servicio-item">
+                    <div class="servicio-icon">📱</div>
+                    <p>Extras en 4G</p>
+                </div>
+                <div class="servicio-item">
+                    <div class="servicio-icon">✈️</div>
+                    <p>Plan de viaje</p>
+                </div>
+                <div class="servicio-item">
+                    <div class="servicio-icon">☎️</div>
+                    <p>Llamadas sin roaming</p>
+                </div>
+                <div class="servicio-item">
+                    <div class="servicio-icon">💰</div>
+                    <p>Recarga otro</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION MENU-NAV -->
+        <section class="menu-nav">
+            <nav class="bottom-nav">
+                <button class="nav-item active">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-label">Cuenta</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-label">Perfil</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">≡</span>
+                    <span class="nav-label">Menú</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-label">Servicios</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">❓</span>
+                    <span class="nav-label">Ayuda</span>
+                </button>
+            </nav>
+        </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

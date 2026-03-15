@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño e implementación de un sistema SDR para la detección de radiación electromagnética debido a la presencia de rayos cósmicos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Roboto', Arial, sans-serif; background: #f5f5f5; color: #222; }
+        .espoch-header { background: #c62828; color: #fff; padding: 1.2rem 0 1.2rem 0; }
+        .espoch-header .container { display: flex; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .espoch-logo { height: 64px; margin-right: 1.5rem; }
+        .espoch-title { font-size: 1.7rem; font-weight: 700; letter-spacing: 0.5px; }
+        .breadcrumb { background: #f3f3f3; color: #444; font-size: 1rem; padding: 0.7rem 0; }
+        .breadcrumb .container { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb a { color: #c62828; text-decoration: none; margin-right: 0.5rem; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .main-content { max-width: 900px; margin: 2.5rem auto 2rem auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 16px #0001; padding: 2.5rem 2rem; }
+        .detail-title { font-size: 1.35rem; color: #1976d2; font-weight: 700; margin-bottom: 0.7rem; }
+        .detail-meta { color: #666; font-size: 1.05rem; margin-bottom: 1.2rem; }
+        .detail-section { margin-bottom: 2.2rem; }
+        .detail-label { color: #c62828; font-weight: 700; margin-bottom: 0.3rem; display: block; }
+        .detail-abstract { color: #444; font-size: 1.08rem; margin-bottom: 1.1rem; }
+        .detail-btns { display: flex; gap: 1.2rem; margin-top: 1.5rem; }
+        .result-btn { background: #c62828; color: #fff; border: none; border-radius: 5px; padding: 0.7rem 1.5rem; font-size: 1rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+        .result-btn:hover { background: #a31515; }
+        .detail-img { width: 180px; border: 1px solid #eee; border-radius: 6px; background: #fff; margin-bottom: 1.2rem; }
+        .detail-authors { margin-bottom: 1.2rem; }
+        .detail-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
+        .detail-table th, .detail-table td { border: 1px solid #ddd; padding: 0.6rem 0.8rem; text-align: left; }
+        .detail-table th { background: #f3f3f3; color: #c62828; }
+        .detail-table tr:nth-child(even) { background: #fafafa; }
+        .footer-espoch { background: #c62828; color: #fff; padding: 2rem 0 1.2rem 0; margin-top: 3rem; }
+        .footer-espoch .container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
+        .footer-block { min-width: 220px; }
+        .footer-title { font-weight: 700; margin-bottom: 0.7rem; }
+        .footer-contact { font-size: 0.98rem; line-height: 1.7; }
+        .footer-social { margin-top: 1rem; }
+        .footer-social a { color: #fff; margin-right: 0.7rem; font-size: 1.3rem; text-decoration: none; }
+        .footer-social a:hover { color: #ffd166; }
+        @media (max-width: 800px) { .main-content, .footer-espoch .container, .espoch-header .container, .breadcrumb .container { padding: 0 1rem; } }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="espoch-header">
+        <div class="container">
+            <img src="logo-espoch.png" alt="Logo ESPOCH" class="espoch-logo">
+            <span class="espoch-title">Escuela Superior Politécnica de Chimborazo</span>
+        </div>
+    </header>
+    <nav class="breadcrumb">
+        <div class="container">
+            <a href="#">Inicio</a> &gt; <a href="#">Buscar por autor</a> &gt; <span>Amagua Romero, Alejandro David</span>
+        </div>
+    </nav>
+    <main class="main-content">
+        <div class="detail-title">Diseño e implementación de un sistema SDR para la detección de radiación electromagnética debido a la presencia de rayos cósmicos</div>
+        <div class="detail-meta">Escuela Superior Politécnica de Chimborazo, 2025-05-09</div>
+        <div class="detail-authors"><span class="detail-label">Autores:</span> Amagua Romero, Alejandro David; Moreno Avilés, David</div>
+        <img src="portada-tesis.png" alt="Portada Tesis" class="detail-img">
+        <div class="detail-section">
+            <span class="detail-label">Resumen (Inglés):</span>
+            <div class="detail-abstract">The Earth is constantly impacted by cosmic radiation, composed of high-energy particles with varying electric and magnetic fields. The objective of this work was to design and implement an SDR system to detect such electromagnetic radiation. The methodology followed was, as a first step, to build a logarithmic periodic antenna (LPDA) that has the capacity to cover a large operating bandwidth between 20 and 80 MHz, associated with a USRP N310 receiver to digitize the signals and analyze them in MATLAB. Subsequently, an algorithm was developed that detected and stored spectral peaks for 67 days, collecting 68,086 samples classified by date, frequency, and power. The statistical analysis allowed to identify patterns and relate the largest number of events, identifying patterns in the measurements, performing standard deviation analysis, measures of central tendency, among others, determining that on December 4th in 2024, was the one with the highest activity in the spectrum, with a level 3 geomagnetic storm reported by NOAA Space Weather Prediction Center SWPC. In this context, it is concluded that the system was effective for the detection of electromagnetic radiation due to the presence of cosmic radiation, due to its efficiency in data acquisition, the manual optimization of the equipment handling, and the accuracy of its records.</div>
+        </div>
+        <div class="detail-section">
+            <span class="detail-label">Descripción (Español):</span>
+            <div class="detail-abstract">La Tierra es constantemente impactada por radiación cósmica compuesta por partículas de alta energía con campos eléctricos y magnéticos variables. Este trabajo tuvo como objetivo diseñar e implementar un sistema SDR para detectar dicha radiación electromagnética. La metodología que se siguió fue como primer paso construir una antena logarítmica periódica (LPDA) que tenga la capacidad de abarcar un gran ancho de banda operativa entre 20 y 80 MHz, asociada a un receptor USRP N310 para digitalizar las señales y analizarlas en MATLAB. Posterior se desarrolló un algoritmo que detectó y almacenó picos espectrales durante 67 días, recolectando 68.086 muestras clasificadas por fecha, frecuencia y potencia. El análisis estadístico permitió identificar patrones y relacionar el mayor número de eventos, identificando patrones en las mediciones, realizando análisis de desviación estándar, medidas de tendencia central, entre otros, determinando que el 4 de diciembre de 2024 fue el que mayor actividad en el espectro manifestó, con una tormenta geomagnética nivel 3 reportada por Centro de Pronósticos del Clima Espacial NOAA SWPC. En este contexto se concluye que el sistema fue eficaz para la detección de radiación electromagnética debido a la presencia de radiación cósmica, por su eficiencia en la toma de datos, la optimización manual del manejo de los equipos y la exactitud en sus registros.</div>
+        </div>
+        <div class="detail-section">
+            <span class="detail-label">Palabras clave:</span>
+            <div class="detail-abstract">RAYOS COSMICOS, ANTENA LOGARITMICA, ANCHO DE BANDA, SDR, USRP N310, MATLAB</div>
+        </div>
+        <div class="detail-section">
+            <span class="detail-label">Citación:</span>
+            <div class="detail-abstract">Amagua Romero, Alejandro David. (2025). Diseño e implementación de un sistema SDR para la detección de radiación electromagnética debido a la presencia de rayos cósmicos. Escuela Superior Politécnica de Chimborazo. Riobamba.</div>
+        </div>
+        <div class="detail-section">
+            <span class="detail-label">URI:</span>
+            <div class="detail-abstract"><a href="https://dspace.espoch.edu.ec/handle/123456789/23973" target="_blank">https://dspace.espoch.edu.ec/handle/123456789/23973</a></div>
+        </div>
+        <div class="detail-section">
+            <span class="detail-label">Colecciones:</span>
+            <div class="detail-abstract">Ingeniero en Electrónica, Telecomunicaciones y Redes; Ingeniero/a en Telecomunicaciones</div>
+        </div>
+        <div class="detail-section">
+            <span class="detail-label">Información adicional:</span>
+            <table class="detail-table">
+                <tr><th>Fecha</th><td>2025-05-09</td></tr>
+                <tr><th>Editorial</th><td>Escuela Superior Politécnica de Chimborazo</td></tr>
+                <tr><th>Tipo</th><td>Tesis de grado</td></tr>
+                <tr><th>Idioma</th><td>Español</td></tr>
+                <tr><th>Licencia</th><td>Acceso Abierto</td></tr>
+            </table>
+        </div>
+        <div class="detail-btns">
+            <a href="./rayos.cosmicos.pdf" class="result-btn" target="_blank"><i class="fa-solid fa-download"></i> Descargar PDF</a>
+            <a href="https://dspace.espoch.edu.ec/items/17bed05a-56c5-4e5b-9334-eca94a9ac959" class="result-btn" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Más información</a>
+        </div>
+    </main>
+    <footer class="footer-espoch">
+        <div class="container">
+            <div class="footer-block">
+                <div class="footer-title">ESCUELA SUPERIOR POLITÉCNICA DE CHIMBORAZO</div>
+                <div class="footer-contact">
+                    Dirección de Bibliotecas y Recursos para el Aprendizaje e Investigación<br>
+                    Panamericana Sur Km 1 1/2<br>
+                    Riobamba - Ecuador<br>
+                    593(03) 2998-200 ext: 1066<br>
+                    biblioteca@espoch.edu.ec
+                </div>
+            </div>
+            <div class="footer-block">
+                <div class="footer-title">SÍGUENOS</div>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/ESPOCHoficial" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/espoch_oficial/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/user/ESPOCHoficial" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-block">
+                <div class="footer-title">RRAAE</div>
+                <div class="footer-contact">
+                    Red de Repositorios de Acceso Abierto del Ecuador<br>
+                    La Referencia Red Latinoamericana de Repositorios
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+    "libros": {
+        "111": {
+            "isbn": "111",
+            "titulo": "Python Pro",
+            "autor": "G. Rossum",
+            "categoria": "Programacion",
+            "cantidad": 2,
+            "disponibles": 1,
+            "prestamos_totales": 1
+        },
+        "222": {
+            "isbn": "222",
+            "titulo": "Clean Code",
+            "autor": "R. Martin",
+            "categoria": "Programacion",
+            "cantidad": 1,
+            "disponibles": 1,
+            "prestamos_totales": 1
+        },
+        "333": {
+            "isbn": "333",
+            "titulo": "El Quijote",
+            "autor": "C. Miguel",
+            "categoria": "Literatura",
+            "cantidad": 3,
+            "disponibles": 3,
+            "prestamos_totales": 1
+        }
+    },
+    "usuarios": {
+        "101": {
+            "id_usuario": "101",
+            "nombre": "Juan Perez",
+            "tel": "994498363",
+            "direccion": "Quito",
+            "multas": 0.0,
+            "libros_prestados": [
+                {
+                    "isbn": "111",
+                    "titulo": "Python Pro",
+                    "fecha_prestamo": "2026-03-05",
+                    "fecha_limite": "2026-03-12"
+                }
+            ]
+        },
+        "303": {
+            "id_usuario": "303",
+            "nombre": "Jose Andrade",
+            "tel": "",
+            "direccion": "",
+            "multas": 0.0,
+            "libros_prestados": []
+        }
+    }
+}

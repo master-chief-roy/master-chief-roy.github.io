@@ -1,5 +1,6 @@
 // Variables globales
 let portafolioData = {};
+let terminalTypingTimeout = null;
 
 // Inicializar la aplicación
 document.addEventListener('DOMContentLoaded', async () => {
@@ -10,10 +11,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Renderizar el contenido
     renderizarPerfil();
+    iniciarTerminal();
     renderizarHistoria();
     renderizarLogros();
+    renderizarProyectos();
+    renderizarTecnologias();
     renderizarCertificados();
-    renderizarHerramientas();
+    renderizarContacto();
     
     // Configurar navegación
     configurarNavegacion();
@@ -57,12 +61,10 @@ async function cargarDatos() {
 // Renderizar perfil principal
 function renderizarPerfil() {
     document.getElementById('nombreHeader').textContent = portafolioData.nombre;
-    document.getElementById('nombreCompleto').textContent = portafolioData.nombre;
-    document.getElementById('carreraTexto').textContent = portafolioData.carrera;
-    document.getElementById('universidadTexto').textContent = portafolioData.universidad;
+    document.getElementById('nombreCompleto').textContent = portafolioData.nombreCompleto || portafolioData.nombre;
+    document.getElementById('subtituloProf').textContent = portafolioData.subtituloProfesional;
+    document.getElementById('fraseBranding').textContent = portafolioData.fraseBranding;
     document.getElementById('resumenTexto').textContent = portafolioData.resumenPerfil;
-    document.getElementById('emailTexto').textContent = portafolioData.email;
-    document.getElementById('telefonoTexto').textContent = portafolioData.telefono;
 
     // Hacer clic en el nombre regresa al inicio
     const nombreHeader = document.getElementById('nombreHeader');
@@ -90,6 +92,63 @@ function renderizarPerfil() {
             linkedinLink.href = portafolioData.redesSociales.linkedin;
         }
     }
+
+}
+
+// Animación tipo terminal (hero)
+function iniciarTerminal() {
+    const terminal = document.getElementById('terminalBody');
+    if (!terminal) return;
+
+const lines = [
+    `> const engineer = {`,
+    `>   name: "Ronny Toctaquiza",`,
+    `>   role: "Telecommunications Engineer",`,
+    `>   focus: ["Software", "Networking", "Cloud"],`,
+    `>   location: "Riobamba, Ecuador"`,
+    `> };`,
+    `> console.log(engineer);`,
+    `> // Welcome to portfolio`,
+];
+
+    let lineIndex = 0;
+    let charIndex = 0;
+
+    const cursor = document.createElement('span');
+    cursor.className = 'terminal-cursor';
+
+    function typeNextChar() {
+        if (lineIndex >= lines.length) {
+            if (!terminal.contains(cursor)) terminal.appendChild(cursor);
+            terminalTypingTimeout = null;
+            return;
+        }
+
+        const line = lines[lineIndex];
+        terminal.textContent += line[charIndex] || '';
+
+        if (!terminal.contains(cursor)) terminal.appendChild(cursor);
+
+        charIndex += 1;
+        if (charIndex > line.length) {
+            terminal.textContent += '\n';
+            lineIndex += 1;
+            charIndex = 0;
+            terminalTypingTimeout = setTimeout(typeNextChar, 350);
+        } else {
+            terminalTypingTimeout = setTimeout(typeNextChar, 45);
+        }
+    }
+
+    // Reiniciar la animación si ya estaba corriendo
+    if (terminalTypingTimeout) {
+        clearTimeout(terminalTypingTimeout);
+        terminalTypingTimeout = null;
+    }
+
+    terminal.textContent = '';
+    if (terminal.contains(cursor)) terminal.removeChild(cursor);
+    typeNextChar();
 }
 
 // Renderizar sección de historia
@@ -108,10 +167,12 @@ function renderizarHistoria() {
         timelineItem.innerHTML = `
             <div class="timeline-marker"></div>
             <div class="timeline-content">
-                <span class="ano">${exp.año}</span>
-                <h3>${exp.titulo}</h3>
-                <p>${exp.empresa}</p>
-                <p>${exp.descripcion}</p>
+                <div class="timeline-header">
+                    <span class="ano">${exp.año}</span>
+                    <h3>${exp.titulo}</h3>
+                    <span class="empresa">${exp.empresa}</span>
+                </div>
+                <p class="descripcion">${exp.descripcion}</p>
             </div>
         `;
         timelineContainer.appendChild(timelineItem);
@@ -237,42 +298,55 @@ function configurarModalCertificado() {
 }
 
 // Renderizar herramientas
-function renderizarHerramientas() {
-    const { herramientas } = portafolioData;
-    
-    document.getElementById('herramientasTitle').textContent = herramientas.titulo;
-    
+function renderizarTecnologias() {
+    const { tecnologias } = portafolioData;
+    if (!tecnologias) return;
+
     const herramientasContainer = document.getElementById('herramientasContainer');
     herramientasContainer.innerHTML = '';
 
-    const skills = herramientas.skills || [];
+    const categorias = tecnologias.categorias || [];
 
-    skills.forEach(skill => {
-        const card = document.createElement('div');
-        card.className = 'skill-card';
+    categorias.forEach(categoria => {
+        const categoriaContainer = document.createElement('div');
+        categoriaContainer.className = 'herramienta-categoria';
 
-        const color = skill.color || 'var(--accent)';
-        const iconHtml = skill.icono && skill.icono.startsWith('fa')
-            ? `<i class="${skill.icono}"></i>`
-            : '';
+        const titulo = document.createElement('h3');
+        titulo.className = 'categoria-title';
+        titulo.textContent = categoria.titulo;
 
-        const percent = Number(skill.porcentaje) || 0;
-        const barWidth = Math.min(Math.max(percent, 0), 100);
+        const grid = document.createElement('div');
+        grid.className = 'categoria-grid';
 
-        card.innerHTML = `
-            <div class="skill-header">
-                <div class="skill-icon" style="color: ${color}; border-color: ${color}; background: ${color}22;">
-                    ${iconHtml}
+        const items = categoria.items || [];
+        items.forEach(skill => {
+            const card = document.createElement('div');
+            card.className = 'skill-card';
+
+            const color = skill.color || 'var(--accent)';
+            const iconHtml = skill.icono && skill.icono.startsWith('fa')
+                ? `<i class="${skill.icono}"></i>`
+                : '';
+
+            const imagenHtml = skill.imagen
+                ? `<img src="${skill.imagen}" alt="${skill.nombre}" class="skill-imagen">`
+                : '';
+
+            card.innerHTML = `
+                <div class="skill-header">
+                    <div class="skill-icon" style="color: ${color}; border-color: ${color}; background: ${color}22;">
+                        ${imagenHtml || iconHtml}
+                    </div>
+                    <div class="skill-name">${skill.nombre}</div>
                 </div>
-                <div class="skill-name">${skill.nombre}</div>
-            </div>
-            <div class="skill-progress">
-                <div class="skill-bar" data-percent="${barWidth}" style="background: ${color};"></div>
-            </div>
-            <div class="skill-value">${barWidth}%</div>
-        `;
+            `;
 
-        herramientasContainer.appendChild(card);
+            grid.appendChild(card);
+        });
+
+        categoriaContainer.appendChild(titulo);
+        categoriaContainer.appendChild(grid);
+        herramientasContainer.appendChild(categoriaContainer);
     });
 
     // Activar animación al aparecer en pantalla
@@ -305,38 +379,122 @@ function activarAnimacionesDeSkills() {
     });
 }
 
+// Renderizar Proyectos
+function renderizarProyectos() {
+    const { proyectos } = portafolioData;
+    if (!proyectos) return;
+
+    const container = document.getElementById('proyectosContainer');
+    if (!container) return;
+    
+    container.innerHTML = '';
+
+    const items = proyectos.items || [];
+    items.forEach(proyecto => {
+        const card = document.createElement('div');
+        card.className = 'proyecto-card';
+        card.style.cursor = 'pointer';
+
+        const iconHtml = proyecto.icono && proyecto.icono.startsWith('fa')
+            ? `<i class="${proyecto.icono}"></i>`
+            : '<i class="fa-solid fa-code"></i>';
+
+        const techsHtml = (proyecto.tecnologias || [])
+            .map(tech => `<span class="proyecto-tech-tag">${tech}</span>`)
+            .join('');
+
+        const imagenHtml = proyecto.imagen 
+            ? `<img src="${proyecto.imagen}" alt="${proyecto.titulo}" class="proyecto-imagen">`
+            : '';
+
+        card.innerHTML = `
+            <div class="proyecto-header">
+                <div class="proyecto-icon">${iconHtml}</div>
+            </div>
+            ${imagenHtml}
+            <div class="proyecto-body">
+                <h3>${proyecto.titulo}</h3>
+                <p>${proyecto.descripcion}</p>
+                <div class="proyecto-techs">${techsHtml}</div>
+                <a href="${proyecto.enlace}" class="btn btn-primary proyecto-btn" onclick="event.stopPropagation();">Ver Proyecto</a>
+            </div>
+        `;
+
+        // Hacer toda la tarjeta clickeable
+        card.addEventListener('click', () => {
+            if (proyecto.enlace) {
+                window.open(proyecto.enlace, '_blank');
+            }
+        });
+
+        container.appendChild(card);
+    });
+}
+
+// Renderizar Contacto
+function renderizarContacto() {
+    const { contacto, redesSociales } = portafolioData;
+    if (!contacto) return;
+
+    const contactoTitle = document.getElementById('contactoTitle');
+    const contactoDesc = document.getElementById('contactoDesc');
+    const contactoEmail = document.getElementById('contactoEmail');
+    const contactoTel = document.getElementById('contactoTel');
+    const contactoWhatsapp = document.getElementById('contactoWhatsapp');
+    const contactoInstagram = document.getElementById('contactoInstagram');
+    const contactoLinkedin = document.getElementById('contactoLinkedin');
+
+    if (contactoTitle) contactoTitle.textContent = contacto.titulo;
+    if (contactoDesc) contactoDesc.textContent = contacto.descripcion;
+    
+    if (contactoEmail) {
+        contactoEmail.href = `mailto:${contacto.email}`;
+        contactoEmail.textContent = contacto.email;
+    }
+    
+    if (contactoTel) {
+        contactoTel.href = `tel:${contacto.telefono}`;
+        contactoTel.textContent = contacto.telefono;
+    }
+
+    // Configurar redes sociales en contacto
+    if (redesSociales) {
+        if (contactoWhatsapp && redesSociales.whatsapp) {
+            contactoWhatsapp.href = redesSociales.whatsapp;
+        }
+        if (contactoInstagram && redesSociales.instagram) {
+            contactoInstagram.href = redesSociales.instagram;
+        }
+        if (contactoLinkedin && redesSociales.linkedin) {
+            contactoLinkedin.href = redesSociales.linkedin;
+        }
+    }
+}
+
 // Helper para activar el enlace de navegación correspondiente
 function setActiveNav(seccion) {
     const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('data-seccion') === seccion);
-    });
+        navLinks.forEach(link => {
+            if (link.getAttribute('data-seccion') === seccion) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
 }
 
 // Configurar navegación entre secciones
 function configurarNavegacion() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    navLinks.forEach(link => {
+    const sideLinks = document.querySelectorAll('.side-nav-link');
+    sideLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            // Obtener la sección
             const seccion = link.getAttribute('data-seccion');
-            
-            // Actualizar clase activa en navegación
-            setActiveNav(seccion);
-            
-            // Mostrar sección
+            // Quitar 'active' de todos los side-nav-link
+            sideLinks.forEach(l => l.classList.remove('active'));
+            // Poner 'active' solo al link clickeado
+            link.classList.add('active');
             mostrarSeccion(seccion);
-            
-            // Cerrar hamburger menu si está abierto
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            if (hamburger.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
         });
     });
 }
@@ -345,12 +503,22 @@ function configurarNavegacion() {
 function configurarHamburger() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
-    hamburger.addEventListener('click', () => {
+
+    const toggleMenu = () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+    };
+
+    hamburger.addEventListener('click', toggleMenu);
+
+    // Accessibility: abrir/cerrar con Enter o Space
+    hamburger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
+        }
     });
-    
+
     // Cerrar menú cuando se presiona fuera
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.navbar')) {
@@ -373,6 +541,11 @@ function mostrarSeccion(nombreSeccion) {
     if (seccionActual) {
         seccionActual.classList.add('active');
         
+        // Si volvemos a Inicio, refrescar la animación de la terminal
+        if (nombreSeccion === 'inicio') {
+            iniciarTerminal();
+        }
+
         // Scroll al inicio de la página
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -394,6 +567,21 @@ function irSeccion(nombreSeccion) {
     mostrarSeccion(nombreSeccion);
 }
 
+// Función para descargar CV
+function descargarCV() {
+    // Crear un elemento de enlace para descargar el CV
+    // Nota: Asegúrate de tener un archivo CV.pdf en la carpeta principal
+    const link = document.createElement('a');
+    link.href = './CV_Ronny_Toctaquiza.pdf'; // Ruta del archivo CV
+    link.download = 'CV_Ronny_Toctaquiza.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Alert como alternativa
+    alert('La descarga de CV comenzará. Si no hay archivo, por favor contacta al ingeniero.');
+}
+
 // Actualizar los datos en tiempo real (si es necesario)
 function actualizarDatos(nuevosDatos) {
     portafolioData = { ...portafolioData, ...nuevosDatos };
@@ -403,7 +591,7 @@ function actualizarDatos(nuevosDatos) {
     renderizarHistoria();
     renderizarLogros();
     renderizarCertificados();
-    renderizarHerramientas();
+    renderizarTecnologias();
 }
 
 // Tema claro / oscuro / automático

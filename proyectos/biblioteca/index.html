@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión Bibliotecaria</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #181818; color: #fff; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 60px auto; background: #232323; border-radius: 12px; box-shadow: 0 4px 24px #0008; padding: 2rem; text-align: center; }
+        h1 { color: #00ffff; }
+        .info { margin: 1.5rem 0; font-size: 1.1rem; color: #b0b0b0; }
+        .btn { display: inline-block; margin-top: 2rem; padding: 0.8rem 2rem; background: #00ffff; color: #181818; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: bold; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+        .btn:hover { background: #00bcbc; }
+        code { background: #222; color: #00ffff; padding: 0.2rem 0.5rem; border-radius: 4px; }
+        .sim-console {
+            background: #181c1f;
+            color: #00ffb7;
+            text-align: left;
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0 1.5rem 0;
+            font-size: 1.05rem;
+            box-shadow: 0 2px 12px #0006;
+            overflow-x: auto;
+            max-height: 480px;
+        }
+        .sim-console .cmd {
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Gestión Bibliotecaria</h1>
+        <div class="info">
+            <p>Este proyecto es una aplicación de consola desarrollada en Python.<br>
+            Para ejecutarla, abre una terminal en la carpeta del proyecto y ejecuta:</p>
+            <p><code>python main_biblioteca.py</code></p>
+            <p>Consulta el <b>README.md</b> para más detalles y ejemplos de uso.</p>
+        </div>
+        <div class="sim-console" id="simConsole">
+            <pre>
+$ python main_biblioteca.py
+
+--- SISTEMA BIBLIOTECARIO INTEGRADOR ---
+1. Libros (Agregar/Listar)
+2. Usuarios (Gestión)
+3. Préstamos
+4. Devoluciones
+5. Reportes (Populares/Multas)
+6. Salir
+Seleccione: <span class="cmd">1</span>
+
+a. Listar Libros
+b. Agregar Nuevo Libro
+Seleccione: <span class="cmd">b</span>
+Ingrese ISBN: <span class="cmd">9781234567890</span>
+Título: <span class="cmd">Cien Años de Soledad</span>
+Autor: <span class="cmd">Gabriel García Márquez</span>
+Categoría: <span class="cmd">Novela</span>
+Cantidad total: <span class="cmd">5</span>
+✔ Libro registrado con éxito.
+
+Seleccione: <span class="cmd">a</span>
+--- INVENTARIO ACTUAL ---
+ISBN: 9781234567890 | Título: Cien Años de Soledad | Autor: Gabriel García Márquez | Stock: 5
+            </pre>
+        </div>
+        <div class="sim-console" id="simConsole2">
+            <pre>
+--- SISTEMA BIBLIOTECARIO INTEGRADOR ---
+1. Libros (Agregar/Listar)
+2. Usuarios (Gestión)
+3. Préstamos
+4. Devoluciones
+5. Reportes (Populares/Multas)
+6. Salir
+Seleccione: <span class="cmd">2</span>
+
+a. Registrar
+b. Buscar
+c. Eliminar
+Seleccione: <span class="cmd">a</span>
+ID/Cédula: <span class="cmd">1234567890</span>
+Nombre: <span class="cmd">Juan Pérez</span>
+Teléfono: <span class="cmd">0999999999</span>
+Dirección: <span class="cmd">Av. Central 123</span>
+✔ Usuario registrado con éxito.
+
+Seleccione: <span class="cmd">b</span>
+Nombre o ID: <span class="cmd">Juan</span>
+[('1234567890', {'id_usuario': '1234567890', 'nombre': 'Juan Pérez', 'tel': '0999999999', 'direccion': 'Av. Central 123', 'multas': 0.0, 'libros_prestados': []})]
+
+Seleccione: <span class="cmd">c</span>
+ID a eliminar: <span class="cmd">1234567890</span>
+✔ Usuario eliminado.
+            </pre>
+        </div>
+        <div class="sim-console" id="simConsole3">
+            <pre>
+--- SISTEMA BIBLIOTECARIO INTEGRADOR ---
+1. Libros (Agregar/Listar)
+2. Usuarios (Gestión)
+3. Préstamos
+4. Devoluciones
+5. Reportes (Populares/Multas)
+6. Salir
+Seleccione: <span class="cmd">3</span>
+Ingrese ISBN o nombre del libro: <span class="cmd">Cien Años de Soledad</span>
+ID del estudiante: <span class="cmd">1234567890</span>
+✔ Préstamo de 'Cien Años de Soledad' registrado.
+Entregar el: 2026-03-22
+
+Seleccione: <span class="cmd">4</span>
+ID del estudiante: <span class="cmd">1234567890</span>
+ISBN del libro a devolver: <span class="cmd">9781234567890</span>
+✔ Devolución procesada correctamente.
+            </pre>
+        </div>
+        <div class="sim-console" id="simConsole4">
+            <pre>
+--- SISTEMA BIBLIOTECARIO INTEGRADOR ---
+1. Libros (Agregar/Listar)
+2. Usuarios (Gestión)
+3. Préstamos
+4. Devoluciones
+5. Reportes (Populares/Multas)
+6. Salir
+Seleccione: <span class="cmd">5</span>
+★★★★★★★★★★ TOP 5 LIBROS MÁS POPULARES ★★★★★★★★★★
+1. Cien Años de Soledad (1 préstamos)
+
+!!!!!!!!!! USUARIOS CON DEUDAS PENDIENTES !!!!!!!!!!
+✅ No existen usuarios con multas pendientes.
+
+Seleccione: <span class="cmd">6</span>
+Saliendo del sistema...
+            </pre>
+        </div>
+        <a class="btn" href="https://github.com/master-chief-roy/sistema-biblioteca-python" target="_blank">Ver código en GitHub</a>
+    </div>
+</body>
+</html>
