@@ -31,6 +31,9 @@ body {
 }
 
 @media (max-width: 700px) {
+        .perfil-foto-inicio {
+            display: none !important;
+        }
     html, body {
         max-width: 100vw;
         overflow-x: hidden !important;
@@ -1353,6 +1356,30 @@ body {
     border-radius: 18px;
     box-shadow: 0 8px 32px var(--shadow);
     margin-bottom: 2.5rem;
+        position: relative;
+}
+
+@media (max-width: 700px) {
+    .hero-inicio {
+        background: var(--bg);
+        overflow: hidden;
+    }
+    .hero-inicio::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('./imagenes/perfil2.jpg') center/cover no-repeat;
+        opacity: 0.22;
+        filter: blur(2.5px) grayscale(60%);
+        z-index: 1;
+    }
+    .hero-inicio-left, .hero-inicio-right {
+        position: relative;
+        z-index: 2;
+    }
+    .hero-inicio-right {
+        display: none;
+    }
 }
         grid-template-columns: 1.1fr 0.9fr;
         gap: 4rem;
