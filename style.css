@@ -31,9 +31,6 @@ body {
 }
 
 @media (max-width: 700px) {
-        .perfil-foto-inicio {
-            display: none !important;
-        }
     html, body {
         max-width: 100vw;
         overflow-x: hidden !important;
@@ -1356,30 +1353,6 @@ body {
     border-radius: 18px;
     box-shadow: 0 8px 32px var(--shadow);
     margin-bottom: 2.5rem;
-        position: relative;
-}
-
-@media (max-width: 700px) {
-    .hero-inicio {
-        background: var(--bg);
-        overflow: hidden;
-    }
-    .hero-inicio::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: url('./imagenes/perfil2.jpg') center/cover no-repeat;
-        opacity: 0.22;
-        filter: blur(2.5px) grayscale(60%);
-        z-index: 1;
-    }
-    .hero-inicio-left, .hero-inicio-right {
-        position: relative;
-        z-index: 2;
-    }
-    .hero-inicio-right {
-        display: none;
-    }
 }
         grid-template-columns: 1.1fr 0.9fr;
         gap: 4rem;
@@ -1392,11 +1365,60 @@ body {
         margin-bottom: 2.5rem;
 
 .hero-inicio-left {
-    display: flex;
-    flex-direction: column;
-    gap: 1.1rem;
-    justify-content: center;
-    padding-left: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+        justify-content: center;
+        padding-left: 0.5rem;
+        position: relative;
+        z-index: 2;
+        animation: heroLeftUp 1.1s cubic-bezier(.23,1.02,.47,.98) both;
+}
+
+@keyframes heroLeftUp {
+    0% {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-12px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-inicio {
+        position: relative;
+        background: transparent !important;
+        box-shadow: none;
+        min-height: 70vh;
+    }
+    .hero-inicio-left {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 92vw;
+        margin: 0 auto;
+        width: 92vw;
+        max-width: 420px;
+        background: rgba(20,20,20,0.82);
+        backdrop-filter: blur(6px);
+        border-radius: 18px;
+        box-shadow: 0 8px 32px var(--shadow);
+        padding: 2.2rem 1.2rem 1.2rem 1.2rem;
+        z-index: 2;
+        animation: heroLeftUp 1.1s cubic-bezier(.23,1.02,.47,.98) both;
+    }
+    #inicio {
+        background: url('./imagenes/perfil2.jpg') center 60px/cover no-repeat;
+        min-height: 100vh;
+        position: relative;
+    }
+}
 }
         gap: 1.6rem;
         padding-left: 0.5rem;
@@ -1406,6 +1428,23 @@ body {
     align-items: center;
     justify-content: flex-end;
     padding-right: 1.2rem;
+}
+
+@media (max-width: 900px) {
+    .hero-inicio-right {
+        display: none !important;
+    }
+    #inicio {
+        background: url('./imagenes/perfil2.jpg') center 60px/cover no-repeat;
+        min-height: 100vh;
+        position: relative;
+    }
+    /* El fondo transparente solo se aplica cuando el left se superpone y el right está oculto */
+    .hero-inicio {
+        background: transparent !important;
+        box-shadow: none;
+    }
+}
 }
         padding-right: 1.2rem;
 
