@@ -24,10 +24,14 @@ Proyecto_Portafolio/
 ├── imagenes/
 ├── img/
 └── proyectos/
-    ├── congreso-imoc-2025/
-    └── tuenti/
+    ├── aplicaciones-web/
     ├── biblioteca/
+    ├── congreso-imoc-2025/
+    ├── iot-vitales/
+    ├── lte-simulation/
     ├── rayos-cosmicos/
+    ├── redes-mikrotik/
+    └── tuenti/
 ```
 
 ## Cómo usar

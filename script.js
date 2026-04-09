@@ -570,10 +570,9 @@ function irSeccion(nombreSeccion) {
 // Función para descargar CV
 function descargarCV() {
     // Crear un elemento de enlace para descargar el CV
-    // Nota: Asegúrate de tener un archivo CV.pdf en la carpeta principal
     const link = document.createElement('a');
-    link.href = './CV_Ronny_Toctaquiza.pdf'; // Ruta del archivo CV
-    link.download = 'CV_Ronny_Toctaquiza.pdf';
+    link.href = './TOCTAQUIZA RONNY CV.pdf'; // Ruta del archivo CV
+    link.download = 'TOCTAQUIZA RONNY CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
